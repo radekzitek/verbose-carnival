@@ -1,1 +1,1 @@
-# verbose-carnival
+# Verbose Carnival Project
