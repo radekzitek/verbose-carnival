@@ -1,15 +1,10 @@
 <template>
-Hello, World!
-<main class="app-content">
-      <RouterView></RouterView>
-    </main>
+  Hello, World!
+  <main class="app-content">
+    <RouterView></RouterView>
+  </main>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-
-<style scoped>
-
-</style>
+<style scoped></style>

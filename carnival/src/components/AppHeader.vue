@@ -1,9 +1,14 @@
 <template>
   <MDBContainer fluid>
-    <MDBRow>
-      <MDBCol md="3"> Carnival </MDBCol>
-      <MDBCol md="9">
+    <MDBRow class="align-items-center m-2">
+      <MDBCol md="2">
+        <img src="../assets/carnival.png" />
+      </MDBCol>
+      <MDBCol md="8">
         <Menubar :model="items" />
+      </MDBCol>
+      <MDBCol md="2">
+        <MDBBtn color="primary" rounded>Login</MDBBtn>
       </MDBCol>
     </MDBRow>
   </MDBContainer>
@@ -11,7 +16,7 @@
 
 <script setup>
 import Menubar from 'primevue/menubar'
-import { MDBCol, MDBRow, MDBContainer } from 'mdb-vue-ui-kit'
+import { MDBCol, MDBRow, MDBContainer, MDBBtn } from 'mdb-vue-ui-kit'
 
 const items = [
   {
@@ -51,6 +56,4 @@ const items = [
 ]
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

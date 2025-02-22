@@ -7,12 +7,9 @@
         <li><router-link to="/contact">Contact</router-link></li>
       </ul>
     </aside>
-
   </div>
 </template>
 
 <script setup></script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

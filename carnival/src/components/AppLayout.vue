@@ -5,10 +5,10 @@
     </MDBRow>
 
     <MDBRow>
-      <MDBCol md="3">
+      <MDBCol md="2">
         <AppSidebar />
       </MDBCol>
-      <MDBCol md="9">
+      <MDBCol md="10">
         <AppMain />
       </MDBCol>
     </MDBRow>
