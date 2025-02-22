@@ -1,30 +1,30 @@
 <template>
-  <div class="app-layout">
-    <header class="app-header">
-      <p>Carnival</p>
-    </header>
+  <MDBContainer fluid>
+    <MDBRow>
+      <AppHeader />
+    </MDBRow>
 
-    <div class="app-main">
-      <aside class="app-sidebar">
-        <ul>
-          <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/about">About</router-link></li>
-          <li><router-link to="/contact">Contact</router-link></li>
-        </ul>
-      </aside>
-      <main class="app-content">
-        <RouterView></RouterView>
-      </main>
-    </div>
+    <MDBRow>
+      <MDBCol md="3">
+        <AppSidebar />
+      </MDBCol>
+      <MDBCol md="9">
+        <AppMain />
+      </MDBCol>
+    </MDBRow>
 
-    <footer class="app-footer">
-      <p>&copy; 2023 My Company</p>
-    </footer>
-  </div>
+    <MDBRow>
+      <AppFooter />
+    </MDBRow>
+  </MDBContainer>
 </template>
 
 <script setup>
-/* import { RouterLink, RouterView } from 'vue-router' */
+import { MDBCol, MDBRow, MDBContainer } from 'mdb-vue-ui-kit'
+import AppHeader from './AppHeader.vue'
+import AppSidebar from './AppSidebar.vue'
+import AppFooter from './AppFooter.vue'
+import AppMain from './AppMain.vue'
 </script>
 
 <style scoped>
@@ -36,33 +36,15 @@
   /* Ensure the layout takes up full viewport height */
 }
 
-.app-header {
-  padding: 1rem;
-  text-align: center;
-  /* Center header content */
-}
-
 .app-main {
   display: flex;
   flex-grow: 1;
   /* Allow main section to expand to fill available space */
 }
 
-.app-sidebar {
-  width: 300px;
-  /* Fixed width for sidebar */
-  padding: 1rem;
-}
-
 .app-content {
   flex-grow: 1;
   /* Allow content to expand to fill remaining space */
   padding: 1rem;
-}
-
-.app-footer {
-  padding: 1rem;
-  text-align: center;
-  /* Center footer content */
 }
 </style>

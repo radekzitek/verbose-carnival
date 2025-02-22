@@ -7,6 +7,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  css: {
+    devSourcemap: true,
+  },
   plugins: [
     vue(),
     tailwindcss(),
