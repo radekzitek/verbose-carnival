@@ -1,102 +1,65 @@
 <template>
-  <div class="d-flex justify-content-center container mt-5">
-    <div class="col-md-6">
-      <div class="card border-primary border">
-        <div class="card-header border-primary">
+  <MDBContainer class="mt-5 d-flex justify-content-center">
+    <MDBCol md="6">
+      <MDBCard class="border-primary border">
+        <MDBCardHeader class="border-primary">
           <h5 class="mb-0 text-center">Register</h5>
-        </div>
-        <div class="card-body">
+        </MDBCardHeader>
+        <MDBCardBody>
           <form @submit.prevent="handleSubmit">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-4">
-                  <label for="firstName" class="form-label">First Name</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    id="firstName"
-                    v-model="firstName"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-4">
-                  <label for="lastName" class="form-label">Last Name</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    id="lastName"
-                    v-model="lastName"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="mb-4">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control form-control-lg"
-                id="email"
-                v-model="email"
-                required
-              />
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-4">
-                  <label for="password" class="form-label">Password</label>
-                  <input
-                    type="password"
-                    class="form-control form-control-lg"
-                    id="password"
-                    v-model="password"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-4">
-                  <label for="verifyPassword" class="form-label">Verify Password</label>
-                  <input
-                    type="password"
-                    class="form-control form-control-lg"
-                    id="verifyPassword"
-                    v-model="verifyPassword"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+            <MDBRow>
+              <MDBCol md="6">
+                <MDBInput label="First Name" type="text" v-model="firstName" required class="mb-4" />
+              </MDBCol>
+              <MDBCol md="6">
+                <MDBInput label="Last Name" type="text" v-model="lastName" required class="mb-4" />
+              </MDBCol>
+            </MDBRow>
+            <MDBInput label="Email" type="email" v-model="email" required class="mb-4" />
+            <MDBRow>
+              <MDBCol md="6">
+                <MDBInput label="Password" type="password" v-model="password" required class="mb-4" />
+              </MDBCol>
+              <MDBCol md="6">
+                <MDBInput label="Verify Password" type="password" v-model="verifyPassword" required class="mb-4" />
+              </MDBCol>
+            </MDBRow>
+            <MDBBtn color="primary" block class="mb-4" type="submit">Register</MDBBtn>
           </form>
-          <button type="button" class="btn btn-secondary btn-block" @click="cancelRegistration">
-            Cancel
-          </button>
+          <MDBBtn color="secondary" block @click="cancelRegistration">Cancel</MDBBtn>
           <p v-if="error" class="text-danger text-center">{{ error }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBCol>
+  </MDBContainer>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import {
+  MDBContainer,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+  MDBBtn,
+  MDBCardHeader,
+  MDBRow,
+} from 'mdb-vue-ui-kit';
 
-const firstName = ref('')
-const lastName = ref('')
-const email = ref('')
-const password = ref('')
-const verifyPassword = ref('')
-const error = ref('')
-const router = useRouter()
+const firstName = ref('');
+const lastName = ref('');
+const email = ref('');
+const password = ref('');
+const verifyPassword = ref('');
+const error = ref('');
+const router = useRouter();
 
 const handleSubmit = async () => {
   if (password.value !== verifyPassword.value) {
-    error.value = 'Passwords do not match'
-    return
+    error.value = 'Passwords do not match';
+    return;
   }
 
   // Simulate API call
@@ -107,16 +70,16 @@ const handleSubmit = async () => {
       lastName: lastName.value,
       email: email.value,
       password: password.value,
-    })
+    });
 
     // Redirect to login page after successful registration
-    router.push('/login')
+    router.push('/login');
   } catch (err) {
-    error.value = 'Registration failed: ' + err.message
+    error.value = 'Registration failed: ' + err.message;
   }
-}
+};
 
 const cancelRegistration = () => {
-  router.push('/') // Redirect to home page
-}
+  router.push('/'); // Redirect to home page
+};
 </script>

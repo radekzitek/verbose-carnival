@@ -1,16 +1,11 @@
 <template>
-  <div class="container">
-    <div class="row fs-5 fw-bold">References:</div>
-    <div v-for="(item, index) in sidebarItems" :key="index" class="row">
-      <div class="d-flex col-md-2 align-items-center text-center">
-        <img
-          :src="item.image"
-          alt="Image"
-          class="img-fluid"
-          style="max-width: 32px; max-height: 32px"
-        />
-      </div>
-      <div class="col-md-10">
+  <MDBContainer>
+    <MDBRow class="fs-5 fw-bold">References:</MDBRow>
+    <MDBRow v-for="(item, index) in sidebarItems" :key="index">
+      <MDBCol md="2" class="d-flex align-items-center justify-content-center">
+        <img :src="item.image" alt="Image" class="img-fluid" style="max-width: 32px; max-height: 32px" />
+      </MDBCol>
+      <MDBCol md="10">
         <a :href="item.url" target="_blank">
           <div class="fw-bold">
             {{ item.oline }}
@@ -20,20 +15,21 @@
         <div class="text-secondary" style="font-size: 0.8rem">
           {{ item.uline }}
         </div>
-      </div>
-    </div>
-  </div>
+      </MDBCol>
+    </MDBRow>
+  </MDBContainer>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import vueLogo from '../assets/vue.svg'
-import vueCliLogo from '../assets/vue.svg'
-import vueRouterLogo from '../assets/vue.svg'
-import piniaLogo from '../assets/pinia.png'
-import viteLogo from '../assets/vite.svg'
-import bootstrapLogo from '../assets/bootstrap.svg'
-import mdbVueLogo from '../assets/mdb-vue.png'
+import { ref } from 'vue';
+import vueLogo from '../assets/vue.svg';
+import vueCliLogo from '../assets/vue.svg';
+import vueRouterLogo from '../assets/vue.svg';
+import piniaLogo from '../assets/pinia.png';
+import viteLogo from '../assets/vite.svg';
+import bootstrapLogo from '../assets/bootstrap.svg';
+import mdbVueLogo from '../assets/mdb-vue.png';
+import { MDBContainer, MDBRow, MDBCol } from 'mdb-vue-ui-kit';
 
 const sidebarItems = ref([
   {
@@ -78,10 +74,7 @@ const sidebarItems = ref([
     url: 'https://mdbootstrap.com/docs/vue/',
     image: mdbVueLogo,
   },
-])
+]);
 </script>
 
-<style scoped lang="scss">
-@use '../assets/styles/main.scss';
-
-</style>
+<style scoped lang="scss"></style>

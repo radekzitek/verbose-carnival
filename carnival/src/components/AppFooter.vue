@@ -1,12 +1,12 @@
 <template>
-  <div class="row">
-    <div class="col-12 text-end">
-      <p class="mb-0">&copy; 2023 Radek Zítek</p>
-    </div>
-  </div>
+  <MDBFooter className="text-center py-3">
+    <p class="mb-0">&copy; 2023 Radek Zítek</p>
+  </MDBFooter>
 </template>
 
-<script setup></script>
+<script setup>
+import { MDBFooter } from 'mdb-vue-ui-kit';
+</script>
 
 <style scoped>
 /* You can add scoped styles here if needed */

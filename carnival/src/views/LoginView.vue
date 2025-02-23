@@ -1,51 +1,41 @@
 <template>
-  <div class="d-flex justify-content-center container mt-5">
-    <div class="col-md-4">
-      <div class="card border-primary border">
-        <div class="card-header border-primary">
+  <MDBContainer class="d-flex justify-content-center mt-5">
+    <MDBCol md="4">
+      <MDBCard class="border-primary border">
+        <MDBCardHeader class="border-primary">
           <h5 class="card-title fs-5 fw-bold mb-0 text-center">Login</h5>
-        </div>
-        <div class="card-body">
+        </MDBCardHeader>
+        <MDBCardBody>
           <form @submit.prevent="handleSubmit">
-            <div class="mb-4">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control form-control-lg"
-                id="email"
-                v-model="email"
-                required
-              />
-            </div>
-            <div class="mb-4">
-              <label for="password" class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control form-control-lg"
-                id="password"
-                v-model="password"
-                required
-              />
-            </div>
-            <div class="mb-4">
+            <MDBInput label="Email" type="email" v-model="email" required class="mb-4" />
+            <MDBInput label="Password" type="password" v-model="password" required class="mb-4" />
+            <div class="text-center">
               <router-link to="/forgot-password">Forgot Password?</router-link>
             </div>
-            <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+            
+            <MDBBtn color="primary" class="mt-4" block type="submit">Login</MDBBtn>
           </form>
-          <button type="button" class="btn btn-secondary btn-block" @click="cancelLogin">
-            Cancel
-          </button>
-          <p v-if="error" class="text-danger text-center">{{ error }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <MDBBtn color="secondary" block @click="cancelLogin">Cancel</MDBBtn>
+          <p v-if="error" class="text-danger mt-3 text-center">{{ error }}</p>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBCol>
+  </MDBContainer>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/authStore'
+import {
+  MDBContainer,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+  MDBBtn,
+  MDBCardHeader,
+} from 'mdb-vue-ui-kit'
 
 const email = ref('')
 const password = ref('')

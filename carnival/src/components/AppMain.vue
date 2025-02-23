@@ -1,9 +1,11 @@
 <template>
-  <main class="app-content">
-    <RouterView></RouterView>
-  </main>
+  <MDBContainer fluid className="app-content">
+    <RouterView />
+  </MDBContainer>
 </template>
 
-<script setup></script>
+<script setup>
+import { MDBContainer } from 'mdb-vue-ui-kit';
+</script>
 
 <style scoped></style>
