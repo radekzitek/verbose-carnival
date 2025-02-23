@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="row fs-4 fw-bold">References:</div>
+    <div class="row fs-5 fw-bold">References:</div>
     <div v-for="(item, index) in sidebarItems" :key="index" class="row">
-      <div class="d-flex col-md-2 text-center align-items-center">
+      <div class="d-flex col-md-2 align-items-center text-center">
         <img
           :src="item.image"
           alt="Image"
@@ -17,7 +17,7 @@
             <br />
           </div>
         </a>
-        <div class="text-secondary" style="font-size: 0.8rem;">
+        <div class="text-secondary" style="font-size: 0.8rem">
           {{ item.uline }}
         </div>
       </div>
@@ -81,4 +81,7 @@ const sidebarItems = ref([
 ])
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+@use '../assets/styles/main.scss';
+
+</style>

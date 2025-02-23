@@ -1,40 +1,39 @@
 <template>
-  <MDBContainer class="p-3">
-    <MDBRow class="align-items-center">
-      <MDBCol md="2" class="d-flex justify-content-left">
-        <img src="../assets/carnival.png" />
-      </MDBCol>
-      <MDBCol md="6" class="d-flex justify-content-left">
-        <MDBBtn tag="a" color="primary" href="/">
-          <MDBIcon iconStyle="fas" icon="home"></MDBIcon> Home
-        </MDBBtn>
-        <MDBBtn tag="a" color="primary" href="/about">
-          <MDBIcon iconStyle="fas" icon="info-circle"></MDBIcon> About
-        </MDBBtn>
-      </MDBCol>
-      <MDBCol md="4" class="d-flex justify-content-end">
-        <MDBBtn tag="a" color="primary" href="/settings">
-          <MDBIcon iconStyle="fas" icon="cogs"></MDBIcon>
-        </MDBBtn>
-        <MDBBtn v-if="authStore.isAuthenticated" tag="a" color="primary" href="/profile">
-          <MDBIcon iconStyle="fas" icon="user-circle"></MDBIcon>
-        </MDBBtn>
-        <MDBBtn v-if="!authStore.isAuthenticated" tag="a" color="primary" href="/login">
-          <MDBIcon iconStyle="fas" icon="sign-in-alt"></MDBIcon> Login
-        </MDBBtn>
-        <MDBBtn v-if="authStore.isAuthenticated" color="primary" @click="logout">
-          <MDBIcon iconStyle="fas" icon="sign-out-alt"></MDBIcon> Logout
-        </MDBBtn>
-        <MDBBtn v-if="!authStore.isAuthenticated" tag="a" color="primary" href="/register">
-          <MDBIcon iconStyle="fas" icon="user-plus"></MDBIcon> Register
-        </MDBBtn>
-      </MDBCol>
-    </MDBRow>
-  </MDBContainer>
+  <div class="container p-3">
+    <div class="row align-items-center">
+      <div class="col-md-2 d-flex justify-content-start">
+        <img src="../assets/carnival.png" alt="Carnival Logo" class="img-fluid" />
+      </div>
+      <div class="col-md-6 d-flex justify-content-start">
+        <router-link to="/" class="btn btn-primary me-2">
+          <i class="fas fa-home"></i> Home
+        </router-link>
+        <router-link to="/about" class="btn btn-primary me-2">
+          <i class="fas fa-info-circle"></i> About
+        </router-link>
+      </div>
+      <div class="col-md-4 d-flex justify-content-end">
+        <router-link to="/settings" class="btn btn-primary me-2">
+          <i class="fas fa-cogs"></i>
+        </router-link>
+        <router-link v-if="authStore.isAuthenticated" to="/profile" class="btn btn-primary me-2">
+          <i class="fas fa-user-circle"></i>
+        </router-link>
+        <router-link v-if="!authStore.isAuthenticated" to="/login" class="btn btn-primary me-2">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </router-link>
+        <button v-if="authStore.isAuthenticated" class="btn btn-primary me-2" @click="logout">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <router-link v-if="!authStore.isAuthenticated" to="/register" class="btn btn-primary">
+          <i class="fas fa-user-plus"></i> Register
+        </router-link>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { MDBCol, MDBRow, MDBContainer, MDBBtn, MDBIcon } from 'mdb-vue-ui-kit'
 import { useAuthStore } from '../stores/authStore'
 import { useRouter } from 'vue-router'
 
@@ -47,4 +46,6 @@ const logout = () => {
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+@use '../assets/styles/main.scss';
+</style>
