@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-for="(item, index) in sidebarItems" :key="index" class="row">
-      <div class="d-flex col-md-2 text-center">
+      <div class="d-flex col-md-2 text-center align-items-center">
         <img
           :src="item.image"
           alt="Image"
@@ -11,16 +11,15 @@
       </div>
       <div class="col-md-10">
         <a :href="item.url" target="_blank">
-          <div class="fs-5 fw-bold">
+          <div class="fw-bold">
             {{ item.oline }}
             <br />
           </div>
         </a>
-        <div class="fs-6 text-secondary">
+        <div class="text-secondary">
           {{ item.uline }}
         </div>
       </div>
-      <hr class="hr hr-blurry" />
     </div>
   </div>
 </template>
@@ -33,7 +32,7 @@ import vueRouterLogo from '../assets/vue.svg'
 import piniaLogo from '../assets/pinia.png'
 import viteLogo from '../assets/vite.svg'
 import bootstrapLogo from '../assets/bootstrap.svg'
-import mdbVueLogo from '../assets/mdb.webp'
+import mdbVueLogo from '../assets/mdb-vue.png'
 
 const sidebarItems = ref([
   {
