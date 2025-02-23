@@ -7,12 +7,19 @@
         </MDBCardHeader>
         <MDBCardBody>
           <form @submit.prevent="handleSubmit">
-            <MDBInput label="Email" type="email" v-model="email" required class="mb-4" />
-            <MDBInput label="Password" type="password" v-model="password" required class="mb-4" />
+            <MDBInput label="Email" type="email" v-model="email" required class="mb-4" autocomplete="email" />
+            <MDBInput
+              label="Password"
+              type="password"
+              v-model="password"
+              required
+              class="mb-4"
+              autocomplete="current-password"
+            />
             <div class="text-center">
               <router-link to="/forgot-password">Forgot Password?</router-link>
             </div>
-            
+
             <MDBBtn color="primary" class="mt-4" block type="submit">Login</MDBBtn>
           </form>
           <MDBBtn color="secondary" block @click="cancelLogin">Cancel</MDBBtn>

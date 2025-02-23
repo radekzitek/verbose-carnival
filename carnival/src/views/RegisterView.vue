@@ -1,5 +1,5 @@
 <template>
-  <MDBContainer class="mt-5 d-flex justify-content-center">
+  <MDBContainer class="d-flex justify-content-center mt-5">
     <MDBCol md="6">
       <MDBCard class="border-primary border">
         <MDBCardHeader class="border-primary">
@@ -9,20 +9,54 @@
           <form @submit.prevent="handleSubmit">
             <MDBRow>
               <MDBCol md="6">
-                <MDBInput label="First Name" type="text" v-model="firstName" required class="mb-4" />
+                <MDBInput
+                  label="First Name"
+                  type="text"
+                  v-model="firstName"
+                  required
+                  class="mb-4"
+                  autocomplete="given-name"
+                />
               </MDBCol>
               <MDBCol md="6">
-                <MDBInput label="Last Name" type="text" v-model="lastName" required class="mb-4" />
+                <MDBInput
+                  label="Last Name"
+                  type="text"
+                  v-model="lastName"
+                  required
+                  class="mb-4"
+                  autocomplete="family-name"
+                />
               </MDBCol>
             </MDBRow>
-            <MDBInput label="Email" type="email" v-model="email" required class="mb-4" />
+            <MDBInput
+              label="Email"
+              type="email"
+              v-model="email"
+              required
+              class="mb-4"
+              autocomplete="email"
+            />
             <MDBRow>
               <MDBCol md="6">
-                <MDBInput label="Password" type="password" v-model="password" required class="mb-4" />
+                <MDBInput
+                  label="Password"
+                  type="password"
+                  v-model="password"
+                  required
+                  class="mb-4"
+                  autocomplete="new-password"
+                />
               </MDBCol>
               <MDBCol md="6">
-                <MDBInput label="Verify Password" type="password" v-model="verifyPassword" required class="mb-4" />
-              </MDBCol>
+                <MDBInput
+                  label="Verify Password"
+                  type="password"
+                  v-model="verifyPassword"
+                  required
+                  class="mb-4"
+                  autocomplete="new-password"
+              /></MDBCol>
             </MDBRow>
             <MDBBtn color="primary" block class="mb-4" type="submit">Register</MDBBtn>
           </form>
@@ -35,8 +69,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import {
   MDBContainer,
   MDBCol,
@@ -46,20 +80,20 @@ import {
   MDBBtn,
   MDBCardHeader,
   MDBRow,
-} from 'mdb-vue-ui-kit';
+} from 'mdb-vue-ui-kit'
 
-const firstName = ref('');
-const lastName = ref('');
-const email = ref('');
-const password = ref('');
-const verifyPassword = ref('');
-const error = ref('');
-const router = useRouter();
+const firstName = ref('')
+const lastName = ref('')
+const email = ref('')
+const password = ref('')
+const verifyPassword = ref('')
+const error = ref('')
+const router = useRouter()
 
 const handleSubmit = async () => {
   if (password.value !== verifyPassword.value) {
-    error.value = 'Passwords do not match';
-    return;
+    error.value = 'Passwords do not match'
+    return
   }
 
   // Simulate API call
@@ -70,16 +104,16 @@ const handleSubmit = async () => {
       lastName: lastName.value,
       email: email.value,
       password: password.value,
-    });
+    })
 
     // Redirect to login page after successful registration
-    router.push('/login');
+    router.push('/login')
   } catch (err) {
-    error.value = 'Registration failed: ' + err.message;
+    error.value = 'Registration failed: ' + err.message
   }
-};
+}
 
 const cancelRegistration = () => {
-  router.push('/'); // Redirect to home page
-};
+  router.push('/') // Redirect to home page
+}
 </script>
