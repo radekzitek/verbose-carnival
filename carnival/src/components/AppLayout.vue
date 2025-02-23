@@ -27,24 +27,4 @@ import AppFooter from './AppFooter.vue'
 import AppMain from './AppMain.vue'
 </script>
 
-<style scoped>
-.app-layout {
-  display: flex;
-  flex-direction: column;
-  /* Stack header, main, and footer vertically */
-  min-height: 100vh;
-  /* Ensure the layout takes up full viewport height */
-}
-
-.app-main {
-  display: flex;
-  flex-grow: 1;
-  /* Allow main section to expand to fill available space */
-}
-
-.app-content {
-  flex-grow: 1;
-  /* Allow content to expand to fill remaining space */
-  padding: 1rem;
-}
-</style>
+<style scoped></style>
