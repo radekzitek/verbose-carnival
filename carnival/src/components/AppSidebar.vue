@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div class="row fs-4 fw-bold">References:</div>
     <div v-for="(item, index) in sidebarItems" :key="index" class="row">
       <div class="d-flex col-md-2 text-center align-items-center">
         <img
@@ -16,7 +17,7 @@
             <br />
           </div>
         </a>
-        <div class="text-secondary">
+        <div class="text-secondary" style="font-size: 0.8rem;">
           {{ item.uline }}
         </div>
       </div>
