@@ -1,6 +1,6 @@
 <template>
   <footer class="app-footer">
-    <p>&copy; 2023 My Company</p>
+    <p>&copy; 2023 Radek Zítek</p>
   </footer>
 </template>
 

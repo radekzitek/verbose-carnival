@@ -1,59 +1,40 @@
 <template>
-  <MDBContainer fluid>
-    <MDBRow class="align-items-center m-2">
-      <MDBCol md="2">
+  <MDBContainer class="p-3">
+    <MDBRow class="align-items-center">
+      <MDBCol md="2" class="d-flex justify-content-left">
         <img src="../assets/carnival.png" />
       </MDBCol>
-      <MDBCol md="8">
-        <Menubar :model="items" />
+      <MDBCol md="6" class="d-flex justify-content-left">
+        <MDBBtn tag="a" color="secondary" rounded href="/">
+          <MDBIcon iconStyle="fas" icon="home"></MDBIcon> Home
+        </MDBBtn>
+        <MDBBtn tag="a" color="secondary" rounded href="/">
+          <MDBIcon iconStyle="fas" icon="info-circle"></MDBIcon> About
+        </MDBBtn>
       </MDBCol>
-      <MDBCol md="2">
-        <MDBBtn color="primary" rounded>Login</MDBBtn>
+      <MDBCol md="4" class="d-flex justify-content-end">
+        <MDBBtn tag="a" color="secondary" rounded href="/settings">
+          <MDBIcon iconStyle="fas" icon="cogs"></MDBIcon>
+        </MDBBtn>
+        <MDBBtn tag="a" color="secondary" rounded href="/profile">
+          <MDBIcon iconStyle="fas" icon="user-circle"></MDBIcon>
+        </MDBBtn>
+        <MDBBtn tag="a" color="secondary" rounded href="/login">
+          <MDBIcon iconStyle="fas" icon="sign-in-alt"></MDBIcon> Login
+        </MDBBtn>
+        <MDBBtn tag="a" color="secondary" rounded href="/logout">
+          <MDBIcon iconStyle="fas" icon="sign-out-alt"></MDBIcon> Logout
+        </MDBBtn>
+        <MDBBtn tag="a" color="secondary" rounded href="/register">
+          <MDBIcon iconStyle="fas" icon="user-plus"></MDBIcon> Register
+        </MDBBtn>
       </MDBCol>
     </MDBRow>
   </MDBContainer>
 </template>
 
 <script setup>
-import Menubar from 'primevue/menubar'
-import { MDBCol, MDBRow, MDBContainer, MDBBtn } from 'mdb-vue-ui-kit'
-
-const items = [
-  {
-    label: 'File',
-    items: [
-      { label: 'New', icon: 'pi pi-fw pi-plus' },
-      { label: 'Open', icon: 'pi pi-fw pi-folder-open' },
-      { separator: true },
-      { label: 'Quit', icon: 'pi pi-fw pi-times' },
-    ],
-  },
-  {
-    label: 'Edit',
-    items: [
-      { label: 'Cut', icon: 'pi pi-fw pi-copy' },
-      { label: 'Copy', icon: 'pi pi-fw pi-clone' },
-      { label: 'Paste', icon: 'pi pi-fw pi-exclamation-triangle' },
-    ],
-  },
-  {
-    label: 'Options',
-    items: [
-      {
-        label: 'Home',
-        to: '/',
-      },
-      {
-        label: 'About',
-        to: '/about',
-      },
-      {
-        label: 'Contact',
-        to: '/contact',
-      },
-    ],
-  },
-]
+import { MDBCol, MDBRow, MDBContainer, MDBBtn, MDBIcon } from 'mdb-vue-ui-kit'
 </script>
 
 <style scoped></style>
