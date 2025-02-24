@@ -27,9 +27,9 @@ class OAuth2Tests(TestCase):
         self.assertIn("username", response.json())
         self.assertIn("email", response.json())
 
-    def test_login(self):
+    def test_oauth_token(self):
         response = self.client.post(
-            reverse("login"),
+            reverse("oauth_token"),
             data=json.dumps(
                 {
                     "username": self.user_data["username"],
@@ -48,8 +48,8 @@ class OAuth2Tests(TestCase):
         self.assertIn("message", response.json())
 
     def test_refresh_token(self):
-        login_response = self.client.post(
-            reverse("login"),
+        oauth_token_response = self.client.post(
+            reverse("oauth_token"),
             data=json.dumps(
                 {
                     "username": self.user_data["username"],
@@ -58,7 +58,7 @@ class OAuth2Tests(TestCase):
             ),
             content_type="application/json",
         )
-        refresh_token = login_response.json().get("refresh_token")
+        refresh_token = oauth_token_response.json().get("refresh_token")
 
         response = self.client.post(
             reverse("refresh_token"),

@@ -1,12 +1,25 @@
 from django.shortcuts import render  # noqa	F401
-
-# Create your views here.
-
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from drf_spectacular.utils import extend_schema
 
 
+@extend_schema(
+    description="Endpoint that returns the details of the request.",
+    responses={
+        200: {
+            "type": "object",
+            "properties": {
+                "method": {"type": "string", "description": "HTTP method used for the request"},
+                "headers": {"type": "object", "description": "Request headers"},
+                "body": {"type": "string", "description": "Request body"},
+                "path": {"type": "string", "description": "Request path"},
+                "query_params": {"type": "object", "description": "Query parameters"}
+            }
+        }
+    }
+)
 @csrf_exempt
 def echo(request):
     """

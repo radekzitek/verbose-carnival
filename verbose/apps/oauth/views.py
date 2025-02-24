@@ -1,5 +1,5 @@
 from django.shortcuts import render  # noqa	F401
-from django.contrib.auth import authenticate, get_user_model # noqa	F401
+from django.contrib.auth import authenticate, get_user_model  # noqa	F401
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -10,6 +10,7 @@ from django.conf import settings
 import json
 import jwt
 import datetime
+from drf_spectacular.utils import extend_schema  # , OpenApiParameter, OpenApiTypes
 
 
 SECRET_KEY = settings.SECRET_KEY
@@ -25,9 +26,29 @@ def generate_jwt(user):
     return token
 
 
+@extend_schema(
+    description="Logs in a user and returns access and refresh tokens.",
+    request=None,  # You can define a serializer for the request body if needed
+    responses={
+        200: {
+            "type": "object",
+            "properties": {
+                "access_token": {"type": "string"},
+                "refresh_token": {"type": "string"},
+                "token_type": {"type": "string"},
+                "expires_in": {"type": "integer"},
+            },
+        },
+        400: {"type": "object", "properties": {"error": {"type": "string"}}},
+        401: {
+            "type": "object",
+            "properties": {"error": {"type": "string"}, "message": {"type": "string"}},
+        },
+    },
+)
 @csrf_exempt
 @require_POST
-def login(request):
+def oauth_token(request):
     try:
         data = json.loads(request.body)
         username = data.get("username")
@@ -55,6 +76,12 @@ def login(request):
         return JsonResponse({"error": "Invalid JSON"}, status=400)
 
 
+@extend_schema(
+    description="Logs out a user (token revocation would be handled here in a real application).",
+    responses={
+        200: {"type": "object", "properties": {"message": {"type": "string"}}},
+    },
+)
 @csrf_exempt
 @require_POST
 def logout(request):
@@ -62,6 +89,25 @@ def logout(request):
     return JsonResponse({"message": "Logged out successfully."}, status=200)
 
 
+@extend_schema(
+    description="Refreshes an access token using a refresh token.",
+    request=None,  # You can define a serializer for the request body if needed
+    responses={
+        200: {
+            "type": "object",
+            "properties": {
+                "access_token": {"type": "string"},
+                "token_type": {"type": "string"},
+                "expires_in": {"type": "integer"},
+            },
+        },
+        400: {"type": "object", "properties": {"error": {"type": "string"}}},
+        401: {
+            "type": "object",
+            "properties": {"error": {"type": "string"}, "message": {"type": "string"}},
+        },
+    },
+)
 @csrf_exempt
 @require_POST
 def refresh_token(request):
@@ -94,6 +140,14 @@ def refresh_token(request):
         return JsonResponse({"error": "Invalid JSON"}, status=400)
 
 
+@extend_schema(
+    description="Sends a password reset email to the user.",
+    request=None,  # You can define a serializer for the request body if needed
+    responses={
+        202: {"type": "object", "properties": {"message": {"type": "string"}}},
+        400: {"type": "object", "properties": {"error": {"type": "string"}}},
+    },
+)
 @csrf_exempt
 @require_POST
 def password_reset_request(request):
@@ -127,6 +181,15 @@ def password_reset_request(request):
         return JsonResponse({"error": "Invalid JSON"}, status=400)
 
 
+@extend_schema(
+    description="Confirms the password reset with a token and new password.",
+    request=None,  # You can define a serializer for the request body if needed
+    responses={
+        200: {"type": "object", "properties": {"message": {"type": "string"}}},
+        400: {"type": "object", "properties": {"error": {"type": "string"}}},
+        401: {"type": "object", "properties": {"error": {"type": "string"}}},
+    },
+)
 @csrf_exempt
 @require_POST
 def password_reset_confirm(request):
@@ -155,6 +218,14 @@ def password_reset_confirm(request):
         return JsonResponse({"error": "Invalid JSON"}, status=400)
 
 
+@extend_schema(
+    description="Changes the user's password.",
+    request=None,  # You can define a serializer for the request body if needed
+    responses={
+        200: {"type": "object", "properties": {"message": {"type": "string"}}},
+        400: {"type": "object", "properties": {"error": {"type": "string"}}},
+    },
+)
 @csrf_exempt
 @require_POST
 def password_change(request):

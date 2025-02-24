@@ -95,7 +95,21 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.metrics",
     "apps.oauth",
+    "rest_framework",
+    "drf_spectacular",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'  # Add this line
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Verbose API',  # Customize your API title
+    'DESCRIPTION': 'API documentation for the Verbose project',  # Customize your API description
+    'VERSION': '1.0.0',         # Customize your API version
+    'SERVE_INCLUDE_SCHEMA': False,  # Set to False to exclude schema in YAML/JSON endpoints
+    # OTHER SETTINGS (refer to drf-spectacular documentation for more options)
+}
 
 
 AUTHENTICATION_BACKENDS = [

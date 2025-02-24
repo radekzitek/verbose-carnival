@@ -28,7 +28,7 @@ class UserTests(TestCase):
         self.assertIn("email", response.json())
 
     def test_get_user_profile(self):
-        self.client.login(
+        self.client.oauth_token(
             username=self.user_data["username"], password=self.user_data["password"]
         )
         response = self.client.get(reverse("get_user_profile"))
@@ -37,7 +37,7 @@ class UserTests(TestCase):
         self.assertIn("email", response.json())
 
     def test_update_user_profile(self):
-        self.client.login(
+        self.client.oauth_token(
             username=self.user_data["username"], password=self.user_data["password"]
         )
         updated_data = {"first_name": "Updated", "last_name": "User"}
