@@ -97,17 +97,18 @@ INSTALLED_APPS = [
     "apps.oauth",
     "rest_framework",
     "drf_spectacular",
+    "corsheaders",
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'  # Add this line
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"  # Add this line
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Verbose API',  # Customize your API title
-    'DESCRIPTION': 'API documentation for the Verbose project',  # Customize your API description
-    'VERSION': '1.0.0',         # Customize your API version
-    'SERVE_INCLUDE_SCHEMA': False,  # Set to False to exclude schema in YAML/JSON endpoints
+    "TITLE": "Verbose API",  # Customize your API title
+    "DESCRIPTION": "API documentation for the Verbose project",  # Customize your API description
+    "VERSION": "1.0.0",  # Customize your API version
+    "SERVE_INCLUDE_SCHEMA": False,  # Set to False to exclude schema in YAML/JSON endpoints
     # OTHER SETTINGS (refer to drf-spectacular documentation for more options)
 }
 
@@ -121,12 +122,19 @@ AUTHENTICATION_BACKENDS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
+    # It is important to keep django.middleware.common.CommonMiddleware after CorsMiddleware
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",  # Replace with your Vue app's origin
+    "http://127.0.0.1:8080",
 ]
 
 ROLLBAR = {

@@ -7,6 +7,22 @@
         </MDBCardHeader>
         <MDBCardBody>
           <form @submit.prevent="handleSubmit">
+            <MDBInput
+              label="Username"
+              type="text"
+              v-model="username"
+              required
+              class="mb-4"
+              autocomplete="username"
+            />
+            <MDBInput
+              label="Email"
+              type="email"
+              v-model="email"
+              required
+              class="mb-4"
+              autocomplete="email"
+            />
             <MDBRow>
               <MDBCol md="6">
                 <MDBInput
@@ -29,14 +45,7 @@
                 />
               </MDBCol>
             </MDBRow>
-            <MDBInput
-              label="Email"
-              type="email"
-              v-model="email"
-              required
-              class="mb-4"
-              autocomplete="email"
-            />
+
             <MDBRow>
               <MDBCol md="6">
                 <MDBInput
@@ -56,7 +65,8 @@
                   required
                   class="mb-4"
                   autocomplete="new-password"
-              /></MDBCol>
+                />
+              </MDBCol>
             </MDBRow>
             <MDBBtn color="primary" block class="mb-4" type="submit">Register</MDBBtn>
           </form>
@@ -82,6 +92,7 @@ import {
   MDBRow,
 } from 'mdb-vue-ui-kit'
 
+const username = ref('')
 const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
@@ -100,6 +111,7 @@ const handleSubmit = async () => {
   try {
     // Registration logic here (e.g., API call)
     console.log('Registration data:', {
+      username: username.value,
       firstName: firstName.value,
       lastName: lastName.value,
       email: email.value,

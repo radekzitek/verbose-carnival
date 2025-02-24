@@ -8,12 +8,12 @@
         <MDBCardBody>
           <form @submit.prevent="handleSubmit">
             <MDBInput
-              label="Email"
-              type="email"
-              v-model="email"
+              label="Username"
+              type="text"
+              v-model="username"
               required
               class="mb-4"
-              autocomplete="email"
+              autocomplete="username"
             />
             <MDBInput
               label="Password"
@@ -40,7 +40,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useAuthStore } from '../stores/authStore'
+import { useAuth } from '../composables/useAuth'
 import {
   MDBContainer,
   MDBCol,
@@ -51,36 +51,13 @@ import {
   MDBCardHeader,
 } from 'mdb-vue-ui-kit'
 
-const email = ref('')
+const username = ref('')
 const password = ref('')
-const error = ref('')
 const router = useRouter()
-const authStore = useAuthStore()
+const { login, error } = useAuth()
 
 const handleSubmit = async () => {
-  try {
-    const response = await fetch('http://localhost:8000/oauth/token/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: email.value,
-        password: password.value,
-      }),
-    })
-
-    const data = await response.json()
-
-    if (response.ok) {
-      authStore.setIsAuthenticated(true)
-      router.push('/') // Redirect to home page
-    } else {
-      error.value = data.error || 'Invalid credentials'
-    }
-  } catch (err) {
-    error.value = 'An error occurred: ' + err.message
-  }
+  await login(username.value, password.value)
 }
 
 const cancelLogin = () => {

@@ -53,16 +53,11 @@
 
 <script setup>
 import { useAuthStore } from '../stores/authStore'
-import { useRouter } from 'vue-router'
+import { useAuth } from '../composables/useAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon } from 'mdb-vue-ui-kit'
 
 const authStore = useAuthStore()
-const router = useRouter()
-
-const logout = () => {
-  authStore.clearAuthentication()
-  router.push('/login')
-}
+const { logout } = useAuth()
 </script>
 
 <style scoped lang="scss"></style>
