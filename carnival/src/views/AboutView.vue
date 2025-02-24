@@ -25,5 +25,5 @@
 </template>
 
 <script setup>
-import { MDBContainer, MDBRow, MDBCol } from 'mdb-vue-ui-kit';
+import { MDBContainer, MDBRow, MDBCol } from 'mdb-vue-ui-kit'
 </script>

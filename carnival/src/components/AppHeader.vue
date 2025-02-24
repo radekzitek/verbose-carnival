@@ -9,23 +9,41 @@
           <MDBIcon icon="home" fas class="me-2" /> Home
         </MDBBtn>
         <MDBBtn tag="router-link" color="primary" to="/about" class="me-2">
-          <MDBIcon icon="info-circle" fas class="me-2"  /> About
+          <MDBIcon icon="info-circle" fas class="me-2" /> About
         </MDBBtn>
       </MDBCol>
       <MDBCol md="4" class="d-flex justify-content-end">
         <MDBBtn tag="router-link" color="primary" to="/settings" class="me-2">
           <MDBIcon icon="cogs" fas />
         </MDBBtn>
-        <MDBBtn v-if="authStore.isAuthenticated" tag="router-link" color="primary" to="/profile" class="me-2">
+        <MDBBtn
+          v-if="authStore.isAuthenticated"
+          tag="router-link"
+          color="primary"
+          to="/profile"
+          class="me-2"
+        >
           <MDBIcon icon="user-circle" fas />
         </MDBBtn>
-        <MDBBtn v-if="!authStore.isAuthenticated" tag="router-link" color="primary" to="/login" class="me-2">
+        <MDBBtn
+          v-if="!authStore.isAuthenticated"
+          tag="router-link"
+          color="primary"
+          to="/login"
+          class="me-2"
+        >
           <MDBIcon icon="sign-in-alt" fas class="me-2" /> Login
         </MDBBtn>
-        <MDBBtn v-if="authStore.isAuthenticated" color="primary" class="me-2"   @click="logout">
+        <MDBBtn v-if="authStore.isAuthenticated" color="primary" class="me-2" @click="logout">
           <MDBIcon icon="sign-out-alt" fas class="me-2" /> Logout
         </MDBBtn>
-        <MDBBtn v-if="!authStore.isAuthenticated" tag="router-link" class="me-2" color="primary" to="/register">
+        <MDBBtn
+          v-if="!authStore.isAuthenticated"
+          tag="router-link"
+          class="me-2"
+          color="primary"
+          to="/register"
+        >
           <MDBIcon icon="user-plus" fas class="me-2" /> Register
         </MDBBtn>
       </MDBCol>
@@ -34,23 +52,17 @@
 </template>
 
 <script setup>
-import { useAuthStore } from '../stores/authStore';
-import { useRouter } from 'vue-router';
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBBtn,
-  MDBIcon,
-} from 'mdb-vue-ui-kit';
+import { useAuthStore } from '../stores/authStore'
+import { useRouter } from 'vue-router'
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon } from 'mdb-vue-ui-kit'
 
-const authStore = useAuthStore();
-const router = useRouter();
+const authStore = useAuthStore()
+const router = useRouter()
 
 const logout = () => {
-  authStore.clearAuthentication();
-  router.push('/login');
-};
+  authStore.clearAuthentication()
+  router.push('/login')
+}
 </script>
 
 <style scoped lang="scss"></style>

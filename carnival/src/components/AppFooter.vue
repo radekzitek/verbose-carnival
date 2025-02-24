@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { MDBFooter } from 'mdb-vue-ui-kit';
+import { MDBFooter } from 'mdb-vue-ui-kit'
 </script>
 
 <style scoped>

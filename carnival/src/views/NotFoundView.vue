@@ -1,5 +1,5 @@
 <template>
-  <MDBContainer class="mt-5 d-flex justify-content-center align-items-center bg-light">
+  <MDBContainer class="d-flex justify-content-center align-items-center bg-light mt-5">
     <MDBCol md="8" lg="6" xl="5">
       <MDBCard>
         <MDBCardBody class="text-center">
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { MDBContainer, MDBCol, MDBCard, MDBCardBody } from 'mdb-vue-ui-kit';
+import { MDBContainer, MDBCol, MDBCard, MDBCardBody } from 'mdb-vue-ui-kit'
 </script>
 
 <style scoped>

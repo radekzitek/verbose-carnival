@@ -10,12 +10,12 @@
         </div>
         <div class="mt-3">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.
           </p>
           <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.
           </p>
         </div>
       </MDBCol>
@@ -24,5 +24,5 @@
 </template>
 
 <script setup>
-import { MDBContainer, MDBRow, MDBCol } from 'mdb-vue-ui-kit';
+import { MDBContainer, MDBRow, MDBCol } from 'mdb-vue-ui-kit'
 </script>

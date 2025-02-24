@@ -7,7 +7,14 @@
         </MDBCardHeader>
         <MDBCardBody>
           <form @submit.prevent="handleSubmit">
-            <MDBInput label="Email" type="email" v-model="email" required class="mb-4" autocomplete="email" />
+            <MDBInput
+              label="Email"
+              type="email"
+              v-model="email"
+              required
+              class="mb-4"
+              autocomplete="email"
+            />
             <MDBInput
               label="Password"
               type="password"
@@ -52,12 +59,24 @@ const authStore = useAuthStore()
 
 const handleSubmit = async () => {
   try {
-    // Simulate API call
-    if (email.value === 'test@example.com' && password.value === 'password') {
+    const response = await fetch('http://localhost:8000/oauth/token/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: email.value,
+        password: password.value,
+      }),
+    })
+
+    const data = await response.json()
+
+    if (response.ok) {
       authStore.setIsAuthenticated(true)
       router.push('/') // Redirect to home page
     } else {
-      error.value = 'Invalid credentials'
+      error.value = data.error || 'Invalid credentials'
     }
   } catch (err) {
     error.value = 'An error occurred: ' + err.message

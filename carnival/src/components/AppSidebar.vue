@@ -3,7 +3,12 @@
     <MDBRow class="fs-5 fw-bold">References:</MDBRow>
     <MDBRow v-for="(item, index) in sidebarItems" :key="index">
       <MDBCol md="2" class="d-flex align-items-center justify-content-center">
-        <img :src="item.image" alt="Image" class="img-fluid" style="max-width: 32px; max-height: 32px" />
+        <img
+          :src="item.image"
+          alt="Image"
+          class="img-fluid"
+          style="max-width: 32px; max-height: 32px"
+        />
       </MDBCol>
       <MDBCol md="10">
         <a :href="item.url" target="_blank">
@@ -21,15 +26,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import vueLogo from '../assets/vue.svg';
-import vueCliLogo from '../assets/vue.svg';
-import vueRouterLogo from '../assets/vue.svg';
-import piniaLogo from '../assets/pinia.png';
-import viteLogo from '../assets/vite.svg';
-import bootstrapLogo from '../assets/bootstrap.svg';
-import mdbVueLogo from '../assets/mdb-vue.png';
-import { MDBContainer, MDBRow, MDBCol } from 'mdb-vue-ui-kit';
+import { ref } from 'vue'
+import vueLogo from '../assets/vue.svg'
+import vueCliLogo from '../assets/vue.svg'
+import vueRouterLogo from '../assets/vue.svg'
+import piniaLogo from '../assets/pinia.png'
+import viteLogo from '../assets/vite.svg'
+import bootstrapLogo from '../assets/bootstrap.svg'
+import mdbVueLogo from '../assets/mdb-vue.png'
+import { MDBContainer, MDBRow, MDBCol } from 'mdb-vue-ui-kit'
 
 const sidebarItems = ref([
   {
@@ -74,7 +79,7 @@ const sidebarItems = ref([
     url: 'https://mdbootstrap.com/docs/vue/',
     image: mdbVueLogo,
   },
-]);
+])
 </script>
 
 <style scoped lang="scss"></style>
