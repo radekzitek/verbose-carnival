@@ -1,9 +1,10 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import UserViewSet
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet, basename='users')
 
 urlpatterns = [
-    path('register/', views.register_user, name='register_user'),
-    path('me/', views.get_user_profile, name='get_user_profile'),
-    path('me/update/', views.update_user_profile, name='update_user_profile'),
-
+    path('', include(router.urls)),
 ]
