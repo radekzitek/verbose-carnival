@@ -91,6 +91,7 @@ import {
   MDBCardHeader,
   MDBRow,
 } from 'mdb-vue-ui-kit'
+import { useUser } from '@/composables/useUser'
 
 const username = ref('')
 const firstName = ref('')
@@ -100,6 +101,7 @@ const password = ref('')
 const verifyPassword = ref('')
 const error = ref('')
 const router = useRouter()
+const { registerUser } = useUser()
 
 const handleSubmit = async () => {
   if (password.value !== verifyPassword.value) {
@@ -107,18 +109,15 @@ const handleSubmit = async () => {
     return
   }
 
-  // Simulate API call
   try {
-    // Registration logic here (e.g., API call)
-    console.log('Registration data:', {
+    await registerUser({
       username: username.value,
-      firstName: firstName.value,
-      lastName: lastName.value,
+      first_name: firstName.value,
+      last_name: lastName.value,
       email: email.value,
       password: password.value,
     })
 
-    // Redirect to login page after successful registration
     router.push('/login')
   } catch (err) {
     error.value = 'Registration failed: ' + err.message
