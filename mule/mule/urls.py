@@ -9,12 +9,10 @@ Main URL patterns:
 - oauth2/: OAuth2 provider endpoints for authentication and authorization
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
+from oauth2_provider import urls as oauth2_urls
 
 urlpatterns = [
-    # Django admin interface
     path('admin/', admin.site.urls),
-
-    # OAuth2 provider endpoints (login, token, authorize, etc.)
-    path('oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('o/', include(oauth2_urls)),
 ]
